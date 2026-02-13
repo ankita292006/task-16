@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Glass Admin Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>GlassAdmin</h2>
+        <button onclick="openForm()">+ Add User</button>
+        <button id="themeToggle">🌙 Theme</button>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+
+        <h1>Users Dashboard</h1>
+        <div class="top-controls">
+    <select id="companyFilter">
+        <option value="">All Companies</option>
+    </select>
+
+    <button onclick="exportCSV()">Export CSV</button>
+    <button onclick="downloadChart()">Download Chart</button>
+</div>
+
+<div class="stats-row">
+    <div class="mini-stat">
+        <h4>Total Users</h4>
+        <p id="userCount">0</p>
+    </div>
+    <div class="mini-stat">
+        <h4>Total Companies</h4>
+        <p id="companyCount">0</p>
+    </div>
+</div>
+
+
+        <input type="text" id="searchInput" placeholder="Search users...">
+
+        <div id="usersContainer" class="grid"></div>
+        <!-- Chart Section -->
+<div class="chart-card glass">
+    <div class="chart-header">
+        <h2>Users Analytics</h2>
+        <div class="chart-controls">
+            <button onclick="changeChart('bar')">Bar</button>
+            <button onclick="changeChart('doughnut')">Doughnut</button>
+            <button onclick="changeChart('line')">Line</button>
+        </div>
+    </div>
+    <canvas id="companyChart"></canvas>
+</div>
+
+
+<!-- Modal Form -->
+<div id="formModal" class="modal hidden">
+    <div class="modal-content glass">
+        <span onclick="closeForm()" class="close">&times;</span>
+        <h2 id="formTitle">Add User</h2>
+
+        <input id="nameInput" placeholder="Name">
+        <input id="emailInput" placeholder="Email">
+        <input id="companyInput" placeholder="Company">
+
+        <button onclick="saveUser()">Save</button>
+    </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
